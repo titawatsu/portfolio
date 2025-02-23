@@ -960,3 +960,10 @@ video {
     margin-top: 5%;
     object-fit: cover;
 }
+
+.mySlides{
+    max-width: 640px;
+    max-height: 360px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
