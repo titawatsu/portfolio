@@ -48,6 +48,7 @@
     $(this).removeClass("hover");
   });
 
+  // --- MODIFIED SECTION STARTS HERE ---
   $(".isotope-wrapper").each(function() {
     var $isotope = $(".isotope-box", this);
     var $filterCheckboxes = $('input[type="radio"]', this);
@@ -60,14 +61,22 @@
       $isotope.isotope({ filter: type });
     };
 
+    // Initialize Isotope
     $isotope.isotope({
       itemSelector: ".isotope-item",
       layoutMode: "masonry"
     });
 
+    // FIX: Trigger layout again once images are loaded
+    // This prevents the overlapping issue on first load
+    $isotope.imagesLoaded().progress( function() {
+        $isotope.isotope('layout');
+    });
+
     $(this).on("change", filter);
     filter();
   });
+  // --- MODIFIED SECTION ENDS HERE ---
 
   lightbox.option({
     resizeDuration: 200,
