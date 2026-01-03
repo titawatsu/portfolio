@@ -61,15 +61,15 @@
       $isotope.isotope({ filter: type });
     };
 
-    // Initialize Isotope
+    // 1. Initialize Isotope immediately
     $isotope.isotope({
       itemSelector: ".isotope-item",
       layoutMode: "masonry"
     });
 
-    // FIX: Trigger layout again once images are loaded
-    // This prevents the overlapping issue on first load
-    $isotope.imagesLoaded().progress( function() {
+    // 2. FORCE RE-LAYOUT ONCE PAGE IS FULLY LOADED
+    // This tells the script: "Wait until all images are 100% visible, then fix the spacing."
+    $(window).on('load', function() {
         $isotope.isotope('layout');
     });
 
