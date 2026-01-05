@@ -48,7 +48,6 @@
     $(this).removeClass("hover");
   });
 
-  // --- MODIFIED SECTION STARTS HERE ---
   $(".isotope-wrapper").each(function() {
     var $isotope = $(".isotope-box", this);
     var $filterCheckboxes = $('input[type="radio"]', this);
@@ -76,10 +75,60 @@
     $(this).on("change", filter);
     filter();
   });
-  // --- MODIFIED SECTION ENDS HERE ---
 
   lightbox.option({
     resizeDuration: 200,
     wrapAround: true
   });
 })(jQuery);
+
+// Function to check which video is in the center
+function playNearestVideo() {
+    var windowCenter = window.innerHeight / 2;
+    var videos = document.querySelectorAll('video');
+    var closestVideo = null;
+    var minDistance = Infinity;
+
+    // 1. Find the video closest to the center
+    videos.forEach(function(video) {
+        var rect = video.getBoundingClientRect();
+        // Calculate the center of the video relative to the viewport
+        var videoCenter = rect.top + (rect.height / 2);
+        // Calculate how far this video is from the center of the screen
+        var distance = Math.abs(windowCenter - videoCenter);
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestVideo = video;
+        }
+    });
+
+    // 2. Play the closest one, pause the rest
+    videos.forEach(function(video) {
+        if (video === closestVideo) {
+             // Check if the video is actually visible on screen before playing
+             var rect = video.getBoundingClientRect();
+             if (rect.top < window.innerHeight && rect.bottom > 0) {
+                 // Play if paused
+                 if (video.paused) {
+                     video.play().catch(function(error) {
+                         // Auto-play was prevented (usually because not muted)
+                         console.log("Autoplay prevented:", error);
+                     });
+                 }
+             } else {
+                 video.pause();
+             }
+        } else {
+            // Pause all other videos
+            if (!video.paused) {
+                video.pause();
+            }
+        }
+    });
+}
+
+// 3. Run the function on Scroll, Resize, and Load
+window.addEventListener('scroll', playNearestVideo);
+window.addEventListener('resize', playNearestVideo);
+window.addEventListener('load', playNearestVideo);

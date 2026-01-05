@@ -57,10 +57,13 @@ img {
     overflow: hidden;
 }
 
+li {
+    list-style-type: circle;
+}
+
 ul {
     padding: 0;
-    margin: 0;
-    list-style: none;
+    margin: 24px;
 }
 
 ul li {
@@ -815,7 +818,7 @@ section.contact-me {
     position: relative;
     background-color: #303030;
     margin: auto;
-    padding: 0px;
+    padding: 1em;
     border: 1px solid #888;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -823,6 +826,20 @@ section.contact-me {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
+}
+
+.modal-body ul li {
+    display: list-item;       /* Required for bullets to show */
+    list-style-type: square;  /* Sets the marker to a square */
+    margin-left: 20px;        /* Adds space so bullets don't overlap text */
+    color: #fff;              /* Ensures text remains visible */
+}
+
+/* Ensure the nested list itself has proper padding */
+.modal-body ul {
+    list-style: square;
+    padding-left: 20px;
+    margin-bottom: 15px;
 }
 
 /* Add Animation */
@@ -898,7 +915,7 @@ section.contact-me {
 }
 .contact-inputs
 {
-    width: 600px;
+    width: 100cap;
     height: 50px;
     border: none;
     outline: none;
@@ -954,11 +971,24 @@ section.contact-me {
     font-size: 11px;
 }
 
+.video-block {
+    margin-bottom: 40px;
+}
+
+.video-block span {
+    display: block;       /* Forces text to its own line */
+    margin-bottom: 15px;  /* Space between text and video */
+}
+
+/* Updated Video CSS */
 video {
-    max-width: 70%;
-    height: auto;
-    margin-top: 5%;
-    object-fit: cover;
+    width: 100%;            /* Tries to fill the container */
+    max-width: 90%;         /* Desktop: Caps width at 80% so it's not huge */
+    height: auto;           /* Maintains aspect ratio */
+    display: block;         /* Allows margin auto to work */
+    margin: 0 auto;         /* Centers the video horizontally */
+    border-radius: 5px;     /* Optional: Adds rounded corners */
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5); /* Optional: Adds depth */
 }
 
 .mySlides{
@@ -966,4 +996,29 @@ video {
     max-height: 360px;
     margin-top: 1rem;
     margin-bottom: 2rem;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    video {
+        max-width: 100%;    /* On phones, let the video use the full screen width */
+        margin-top: 10px;
+    }
+    
+    /* Adjust text size for mobile if needed */
+    .section-heading span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 845px) {
+  .modal-content {
+    width: 90%; /* Takes up most of the screen on mobile */
+    margin-top: 15%; /* Slight adjustment to vertical position */
+  }
+  
+  /* Optional: Reduce the huge top gap on mobile so more content fits */
+  .modal {
+    padding-top: 60px; 
+  }
 }
