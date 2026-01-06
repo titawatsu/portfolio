@@ -665,137 +665,9 @@ section.contact-me {
     text-align: center;
 }
 
-@media screen and (max-width: 1680px) {
-    .menu {
-        left: 5%;
-    }
-
-    .section {
-        color: #fff;
-        width: 65%;
-        right: 5%;
-        left: 30%;
-    }
-}
-
-@media screen and (max-width: 1680px) and (min-width: 846px) { 
-    .menu .social-network ul li a {
-        width: 36px;
-        height: 36px;
-        line-height: 36px;
-    }
-
-    .menu .social-network ul li {
-        margin: 0;
-    }
-
-    .menu .image {
-        margin-top: 60px;
-    }
-}
-
-@media screen and (max-width: 1280px) {
-    .menu {
-        left: 0%;
-    }
-
-    .right-image-post h4,
-    .left-image-post h4 {
-        margin-top: 0px;
-    }
-
-    .right-image-post p,
-    .left-image-post p {
-        margin-top: 15px;
-    }
-
-    .right-image-post .white-button,
-    .left-image-post .white-button {
-        margin-top: 25px;
-    }
-
-}
-
 .menu .container {
     padding-left: 0;
     padding-right: 0;
-}
-
-@media screen and (max-width: 1280px) and (min-width: 846px) {
-    .menu {
-        width: 25%;
-    }
-}
-
-#menu-toggle,
-#menu-close {
-    display: none;
-}  
-
-@media screen and (max-width: 845px) {        
-    #menu-toggle,
-    #menu-close {
-        display: inline-block;
-    }    
-
-    .menu {        
-        width: 320px;
-        -webkit-transform: translateX(-100%) !important;
-        transform: translateX(-100%) !important;
-        transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
-        transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
-        transition: transform 233ms cubic-bezier(0, 0, 0.21, 1), -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
-    }
-
-    .menu .image {
-        margin-top: 40px;        
-    }
-
-    .menu .image img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .menu .author-content {
-        margin: 20px 0px 40px 0px;
-    }
-
-    .menu .container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .menu.open {
-        display: inline-block;
-        -webkit-transform: translateX(0) !important;
-                transform: translateX(0) !important;
-    }
-
-    .responsive-nav {
-        display: inline-block;
-    }
-    .section {
-        width: 94%;
-        right: 3%;
-        left: 3%;
-    }
-    .isotope-item {
-        width: 94%;
-        margin: 3%;
-    }
-    .left-image-post img {
-        margin-bottom: 30px;
-    }
-    .right-image-post img {
-        margin-top: 30px;
-    }
-    .isotope-item {
-        border-bottom: none;
-        text-align: center;
-    }
-    .isotope-toolbar {
-        margin-bottom: 20px;
-    }
 }
 
 /* The Modal (background) */
@@ -998,27 +870,188 @@ video {
     margin-bottom: 2rem;
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-    video {
-        max-width: 100%;    /* On phones, let the video use the full screen width */
-        margin-top: 10px;
-    }
-    
-    /* Adjust text size for mobile if needed */
-    .section-heading span {
-        font-size: 14px;
-    }
+#menu-toggle,
+#menu-close {
+    display: none;
 }
 
+/* =========================================
+   1. LARGE SCREENS & SMALL DESKTOPS
+   Target: < 1680px
+   ========================================= */
+@media screen and (max-width: 1680px) {
+  .menu {
+    left: 5%;
+  }
+
+  .section {
+    color: #fff;
+    width: 65%;
+    right: 5%;
+    left: 30%;
+  }
+}
+
+/* =========================================
+   2. LAPTOPS & TABLET LANDSCAPE (iPad Pro/Air Horizontal)
+   Target: < 1280px (Covers standard 1024px iPad landscape)
+   ========================================= */
+@media screen and (max-width: 1280px) {
+  .menu {
+    left: 0%; /* Stick menu to left edge to save space */
+  }
+
+  /* Adjust Post Images alignments */
+  .right-image-post h4,
+  .left-image-post h4 {
+    margin-top: 0px;
+  }
+
+  .right-image-post p,
+  .left-image-post p {
+    margin-top: 15px;
+  }
+
+  .right-image-post .white-button,
+  .left-image-post .white-button {
+    margin-top: 25px;
+  }
+}
+
+/* Specific Tweak for "In-Between" Screens (iPad Landscape) */
+@media screen and (max-width: 1280px) and (min-width: 846px) {
+  .menu {
+    width: 25%; /* Slightly wider menu on these screens */
+  }
+
+  /* Shrink social icons slightly to fit sidebar */
+  .menu .social-network ul li a {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+  }
+
+  .menu .social-network ul li {
+    margin: 0;
+  }
+
+  .menu .image {
+    margin-top: 60px;
+  }
+}
+
+/* =========================================
+   3. TABLET PORTRAIT & MOBILE (The "Break Point")
+   Target: < 845px (Includes iPad Vertical, iPad Mini, Phones)
+   
+   IMPORTANT: This is where the Sidebar disappears and becomes 
+   a Toggle/Hamburger menu.
+   ========================================= */
 @media screen and (max-width: 845px) {
+  
+  /* --- Menu System Switches to Mobile --- */
+  #menu-toggle,
+  #menu-close {
+    display: inline-block;
+  }
+
+  .menu {
+    width: 320px;
+    -webkit-transform: translateX(-100%) !important;
+    transform: translateX(-100%) !important;
+    transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
+    /* Improve performance on tablets */
+    will-change: transform; 
+  }
+
+  .menu.open {
+    display: inline-block;
+    -webkit-transform: translateX(0) !important;
+    transform: translateX(0) !important;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5); /* Add shadow for depth over content */
+  }
+
+  /* Internal Menu Spacing */
+  .menu .image {
+    margin-top: 40px;
+  }
+
+  .menu .image img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .menu .author-content {
+    margin: 20px 0px 40px 0px;
+  }
+
+  .menu .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .responsive-nav {
+    display: inline-block;
+  }
+
+  /* --- Content Area Expands to Full Width --- */
+  .section {
+    width: 94%;
+    right: 3%;
+    left: 3%;
+  }
+
+  .isotope-item {
+    width: 94%;
+    margin: 3%;
+    border-bottom: none;
+    text-align: center;
+  }
+
+  .isotope-toolbar {
+    margin-bottom: 20px;
+  }
+
+  /* --- Image Adjustments --- */
+  .left-image-post img {
+    margin-bottom: 30px;
+  }
+
+  .right-image-post img {
+    margin-top: 30px;
+  }
+
+  /* --- Modal (Popup) Fixes for Tablet/Mobile --- */
   .modal-content {
-    width: 90%; /* Takes up most of the screen on mobile */
-    margin-top: 15%; /* Slight adjustment to vertical position */
+    width: 90%; /* Much wider on small screens */
+    margin-top: 15%; 
+    max-height: 85vh; /* Prevent modal getting too tall */
+    overflow-y: auto; /* Scroll inside modal if needed */
   }
   
-  /* Optional: Reduce the huge top gap on mobile so more content fits */
   .modal {
     padding-top: 60px; 
+  }
+}
+
+/* =========================================
+   4. SMALL MOBILE DEVICES
+   Target: < 768px (Standard Phones)
+   ========================================= */
+@media screen and (max-width: 768px) {
+  
+  /* --- Video Players --- */
+  video {
+    max-width: 100%; /* Use full width on phones */
+    margin-top: 10px;
+  }
+  
+  /* --- Text Scaling --- */
+  .section-heading span {
+    font-size: 14px;
+  }
+  
+  .service-item {
+    padding: 30px; /* Reduce padding to save space */
   }
 }
