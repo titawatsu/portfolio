@@ -954,6 +954,71 @@ video {
     opacity: 1;
 }
 
+.custom-split-layout {
+    display: flex;
+    align-items: center; /* Vertically center the text with the model */
+    justify-content: space-between;
+    gap: 40px; /* Space between text and model */
+    margin-top: 60px;
+}
+
+/* Text Column Settings */
+.custom-col-text {
+    flex: 1; /* Takes up 50% width */
+    text-align: left;
+}
+
+.custom-col-text ul {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    list-style: square;
+    padding-left: 20px;
+    color: #fff;
+}
+
+/* Model Column Settings */
+.custom-col-model {
+    flex: 1; /* Takes up 50% width */
+    background: rgba(255, 255, 255, 0.05); /* Optional: subtle bg box */
+    border-radius: 20px;
+    padding: 10px;
+}
+
+/* Specific styling to ensure the model viewer has size */
+.custom-col-model model-viewer {
+    width: 100%;
+    height: 500px; /* Desktop height */
+    border-radius: 15px;
+    background-color: #2a2a2a; /* Dark background behind model */
+}
+
+/* 2. Mobile Layout (Stacked Vertical) */
+@media screen and (max-width: 768px) {
+    .custom-split-layout {
+        flex-direction: column-reverse; /* Puts Text on Bottom, Model on Top */
+        gap: 30px;
+    }
+
+    .custom-col-text, 
+    .custom-col-model {
+        width: 100%; /* Full width on phone */
+        flex: none;
+    }
+
+    .custom-col-model model-viewer {
+        height: 350px; /* Slightly shorter on phone */
+    }
+
+    .custom-col-text {
+        text-align: center; /* Center text on mobile for better look */
+    }
+    
+    .custom-col-text ul {
+        text-align: left; /* Keep list aligned left though */
+        display: inline-block;
+    }
+}
+
 /* =========================================
    1. LARGE SCREENS & SMALL DESKTOPS
    Target: < 1680px
